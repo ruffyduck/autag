@@ -26,7 +26,7 @@ class AutoCleanup(AutoTag):
         self.__remove_files(directory)
 
 
-    def multiset_auto_value(self, directory=None):
+    def directory_auto_value(self, directory=None):
         if directory is None:
             return
 

@@ -10,6 +10,7 @@ from controller.auremove import AutoRemoval
 from controller.aurename import AutoRename
 from controller.aumove import AutoMove
 from controller.auclean import AutoCleanup
+from controller.audefault import AutoDefault
 from model.audict import build_auto_dicts
 
 
@@ -37,3 +38,11 @@ AUMOVE = AutoMove()
 
 AUCLEAN = AutoCleanup()
 AUCLEAN.set_auto_value(AUFIL)
+
+AUDEF = AutoDefault("resources/defaultvalues.json")
+AUDEF.set_auto_value(AUFIL)
+
+AUFIL.save_changes()
+
+files = list_files("resources")
+print(files)

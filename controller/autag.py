@@ -6,13 +6,8 @@ from controller.filereader import list_files, MUSICFLAGS
 class AutoTag:
     """Abstract base class for auto tags"""
 
-    def __init__(self, tag=None):
-        self.tag = tag
-
-
-    def set_base_tag(self, basetag):
-        """Set underlying base tag"""
-        self.tag = basetag
+    def __init__(self):
+        pass
 
 
     @abstractmethod
@@ -21,7 +16,13 @@ class AutoTag:
         pass
 
 
-    def multiset_auto_value(self, directory=None):
+    def multiset_auto_value(self, files):
+        """Generate automatic values for all given files"""
+        for file in files:
+            self.set_auto_value(file)
+
+
+    def directory_auto_value(self, directory=None):
         """Generates automatic values for all files in given directory"""
         if directory is None:
             return

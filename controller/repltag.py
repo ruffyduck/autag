@@ -7,7 +7,8 @@ class ReplaceTag(AutoTag):
     on commited dictionary"""
 
     def __init__(self, dictionary=None, tag=None):
-        super().__init__(tag)
+        super().__init__()
+        self.tag = tag
         self.dictionary = dictionary
 
 
