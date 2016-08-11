@@ -24,4 +24,4 @@ class AutoImage(AutoTag):
             imagefile = imagefiles[0]
 
             file.remove_images()
-            file.add_image(imagefile, 3)   
+            file.add_image(imagefile, 3)

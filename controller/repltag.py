@@ -16,12 +16,12 @@ class ReplaceTag(AutoTag):
             return
 
         if self.dictionary.partial:
-            self.replace_partial(file)
+            self.__replace_partial(file)
         else:
-            self.replace_complete(file)
+            self.__replace_complete(file)
 
 
-    def replace_partial(self, file):
+    def __replace_partial(self, file):
         """Replaces only relevant portion of the tag"""
         value = file.get_tag_value(self.tag)
         
@@ -32,7 +32,7 @@ class ReplaceTag(AutoTag):
                 break
 
 
-    def replace_complete(self, file):
+    def __replace_complete(self, file):
         """Replace the whole tag with value from dictionary"""
         value = file.get_tag_value(self.tag)
         

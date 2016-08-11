@@ -4,14 +4,16 @@ from model.auflac import AuFlac
 from model.basetag import get_tag
 from controller.repltag import ReplaceTag
 from controller.auimage import AutoImage
-from controller.filereader import list_files, count_files, get_directory
+from controller.filereader import list_files, count_files, get_directory, delete_empty_directories, get_aufile
 from controller.autagger import AutoTagger
 from controller.auremove import AutoRemoval
 from controller.aurename import AutoRename
+from controller.aumove import AutoMove
+from controller.auclean import AutoCleanup
 from model.audict import build_auto_dicts
 
 
-AUFIL = AuFlac("resources/test.flac")
+AUFIL = get_aufile("resources/music/test.flac")
 AUTA = get_tag("GENRE")
 AUTA2 = get_tag("TITLE")
 
@@ -30,5 +32,8 @@ TAGGER = AutoTagger()
 
 TAGGER.auto_tag_file(AUFIL)
 
-AURENAME = AutoRename()
-AURENAME.set_auto_value(AUFIL)
+AUMOVE = AutoMove()
+#AUMOVE.set_auto_value(AUFIL)
+
+AUCLEAN = AutoCleanup()
+AUCLEAN.set_auto_value(AUFIL)

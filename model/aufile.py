@@ -9,7 +9,7 @@ class AuFile:
     def __init__(self, fileName=None, audio=None):
         self.filename = fileName
         self.audio = audio
-        self._tags = {}
+        self.__tags = {}
 
         self.read_tags()
 
@@ -21,15 +21,15 @@ class AuFile:
 
         for tag in self.audio.tags:
             basetag = get_tag(tag[0])
-            self._tags[basetag] = tag[1]
+            self.__tags[basetag] = tag[1]
 
 
     def get_tag_value(self, basetag):
         """Get value of commited base tag"""
-        if not basetag in self._tags:
-            self._tags[basetag] = None
+        if not basetag in self.__tags:
+            self.__tags[basetag] = None
 
-        return self._tags[basetag]
+        return self.__tags[basetag]
 
 
     def get_tag_value_by_name(self, tagname):
@@ -40,30 +40,35 @@ class AuFile:
 
     def tag_iterator(self):
         """Returns an iterator of the file's tags"""
-        return iter(self._tags)
+        return iter(self.__tags)
 
 
     def write_tag(self, basetag, value):
         """Write value of tag"""
-        self._tags[basetag] = value
+        self.__tags[basetag] = value
         self.audio[basetag.tag] = value
 
 
     def delete_tag(self, basetag):
         """Deletes tag from file"""
-        if basetag in self._tags:
-            del self._tags[basetag]
+        if basetag in self.__tags:
+            del self.__tags[basetag]
 
 
     def save_changes(self):
         """Save all additions/deletions to file"""
         self.audio.delete()
 
-        for tag in self._tags:
-            if not self._tags[tag] is None:
-                self.audio[tag.tag] = self._tags[tag]
+        for tag in self.__tags:
+            if not self.__tags[tag] is None:
+                self.audio[tag.tag] = self.__tags[tag]
 
         self.audio.save()
+
+
+    def print_tags(self):
+        """Output all tags of file"""
+        print(self.audio.tags)
 
 
     @abstractmethod
@@ -87,9 +92,4 @@ class AuFile:
     @abstractmethod
     def get_file_extension(self):
         """Returns extension of file"""
-        pass
-
-
-    def print_tags(self):
-        """Output all tags of file"""
-        print(self.audio.tags)
+        pass   
