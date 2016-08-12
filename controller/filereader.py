@@ -35,7 +35,7 @@ def get_aufiles(directory):
     musicfiles = list_files(directory, MUSICFLAGS)
 
     for musicfile in musicfiles:
-        aufile = build_aufile(musicfile)
+        aufile = get_aufile(musicfile)
 
         if not aufile is None:
             aufiles.append(aufile)

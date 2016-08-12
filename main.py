@@ -13,6 +13,8 @@ from controller.auclean import AutoCleanup
 from controller.audefault import AutoDefault
 from model.audict import build_auto_dicts
 
+from view.augui import AuGUI
+
 
 AUFIL = get_aufile("resources/music/test.flac")
 AUTA = get_tag("GENRE")
@@ -44,5 +46,6 @@ AUDEF.set_auto_value(AUFIL)
 
 AUFIL.save_changes()
 
-files = list_files("resources")
-print(files)
+
+gui = AuGUI()
+gui.draw()
