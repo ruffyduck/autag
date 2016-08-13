@@ -1,0 +1,36 @@
+{
+    "GENRE": {
+	"partial": "False",
+	"list": [{
+	    "value": "Hip-Hop",
+	    "applicants": [
+		"Hiphop",
+		"Hip Hop",
+		"HipHop",
+		"Rap"
+	    ] 
+	},
+	{
+	    "value": "IDM",
+	    "applicants": [
+		"EDM",
+		"Electro",
+		"Electronic",
+		"Dance"
+	    ] 
+	}]
+    },
+    "TITLE": {
+	"partial": "True",
+	"list": [{
+	    "value": "ft.",
+	    "applicants": [
+		"feat",
+		"feat.",
+		"ft",
+		"featuring",
+		"Featuring"
+	    ]
+	}]
+    }
+}
