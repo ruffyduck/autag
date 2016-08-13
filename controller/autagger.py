@@ -32,8 +32,8 @@ class AutoTagger:
         for autag in self.autags:
             autag.multiset_auto_value(files)
 
-        for file in files:
-            file.save_changes()
+        #for file in files:
+        #    file.save_changes()
 
 
     def auto_tag_directory(self, directory):
@@ -43,6 +43,6 @@ class AutoTagger:
         for autag in self.autags:
             autag.directory_auto_value(directory)
 
-        for file in files:
-            file.save_changes()
-            pass
+        #for file in files:
+        #    file.save_changes()
+        #    pass
