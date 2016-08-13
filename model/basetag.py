@@ -9,14 +9,17 @@ class BaseTag:
 
 
 TAGS = {}
+TAGS["ALBUMARTIST"] = BaseTag("Album Artist", "ALBUMARTIST")
 TAGS["TRACKNUMBER"] = BaseTag("#", "TRACKNUMBER")
-TAGS["TOTALTRACKS"] = BaseTag("TT", "TRACKNUMBER")
+TAGS["TOTALTRACKS"] = BaseTag("TT", "TOTALTRACKS")
 TAGS["TRACKTOTAL"] = BaseTag("TT", "TRACKTOTAL")
 TAGS["DISCNUMBER"] = BaseTag("$", "DISCNUMBER")
 TAGS["DISCTOTAL"] = BaseTag("DT", "DISCTOTAL")
 TAGS["TOTALDISCS"] = BaseTag("DT", "TOTALDISCS")
 TAGS["ORGANIZATION"] = BaseTag("Label", "ORGANIZATION")
 TAGS["CONTENTGROUP"] = BaseTag("Type", "CONTENTGROUP")
+TAGS["RATING"] = BaseTag("R#", "RATING")
+TAGS["ALBUM RATING"] = BaseTag("AR#", "ALBUM RATING")
 
 def get_tag(name):
     """Get Tag by name"""

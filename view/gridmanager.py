@@ -18,6 +18,11 @@ class GridManager:
             
         element.grid(row=self.columns[ccolumn], column=ccolumn)
         self.columns[ccolumn] += 1
-        
+
+
+    def reset(self):
+        """Resets the complete grid. Should be called when redrawing GUI"""
+        for column in self.columns:
+            self.columns[column] = 1
     
         

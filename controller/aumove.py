@@ -10,7 +10,7 @@ from controller.filereader import get_aufile, move_aufile, MUSICFLAGS
 class AutoMove(AutoTag):
     """Class that allows automatic moving of files into user-defined folder structures"""
 
-    def __init__(self, scheme="$GENRE%/$ARTIST%/$ALBUM%/", parentdirectory="",
+    def __init__(self, parentdirectory="", scheme="$GENRE%/$ARTIST%/$DATE% - $ALBUM%/",
                  keepfiles=[".log", ".m3u"]):
         super().__init__()
 
@@ -21,7 +21,7 @@ class AutoMove(AutoTag):
         if parentdirectory != "":
             self.scheme = parentdirectory + '/' + self.scheme
 
-        self.scheme = scheme.replace("$", "[T]").replace("%", "[/T]")
+        self.scheme = self.scheme.replace("$", "[T]").replace("%", "[/T]")
         regex = r"\[T[^\]]*\](.*?)\[/T\]"
         self.tags = set()
         for tag in re.findall(regex, self.scheme):
@@ -73,7 +73,7 @@ class AutoMove(AutoTag):
     def directory_auto_value(self, directory=None):
         if directory is None:
             return
-
+        
         musicfiles = list_files(directory, MUSICFLAGS)
         if len(musicfiles) is 0:
             return
@@ -83,8 +83,8 @@ class AutoMove(AutoTag):
         fpath = self.__build_scheme_path(mfile)
 
         for filename in musicfiles:
-            filedir, filename = os.path.split(filename)
-            filesrc = fpath + filename
+            filedir, only_filename = os.path.split(filename)
+            filesrc = fpath + only_filename
 
             move_aufile(filename, filesrc)
 

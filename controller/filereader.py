@@ -50,11 +50,11 @@ def move_aufile(filesrc, filetarget):
 
     if not file is None:
         move(filesrc, filetarget)
-        file.filename = filetarget
+        file.update_filepath(filetarget)
         AUFILES[filetarget] = file
 
-        if not AUFILES.get(filesrc) is None:
-            del[AUFILES[filesrc]]
+        #if not AUFILES.get(filesrc) is None:
+        #    del[AUFILES[filesrc]]
 
 
 def list_files(directory, flags=None, reverse_flags=False):

@@ -72,6 +72,12 @@ class AuFile:
 
 
     @abstractmethod
+    def update_filepath(self, filepath):
+        """Updates file path of this file"""
+        pass
+
+
+    @abstractmethod
     def get_images(self):
         """Get a list of all embedded images"""
         pass

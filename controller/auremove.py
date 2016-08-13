@@ -7,11 +7,12 @@ from model.basetag import get_tag
 class AutoRemoval(AutoTag):
     """Class that can remove tags automatically dependinding on flags"""
 
-    def __init__(self, flags=[]):
+    def __init__(self, scheme=None):
         super().__init__()
         self.flags = set()
-        for flag in flags:
-            self.flags.add(get_tag(flag))
+
+        if not scheme is None:
+            self.read_flags(scheme)
 
 
     def read_flags(self, jsonfile):

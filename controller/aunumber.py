@@ -1,7 +1,7 @@
 """Class for automatically indexing music files"""
 
 from controller.autag import AutoTag
-from controller.filereader import list_files, MUSICFLAGS
+from controller.filereader import get_aufiles
 from model.basetag import get_tag
 
 class AutoNumbers(AutoTag):
@@ -38,5 +38,5 @@ class AutoNumbers(AutoTag):
         if directory is None:
             return
 
-        files = list_files(directory, MUSICFLAGS)
+        files = get_aufiles(directory)
         self.multiset_auto_value(files)

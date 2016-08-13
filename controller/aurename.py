@@ -33,4 +33,6 @@ class AutoRename(AutoTag):
                 name = name.replace("[T]" + tag + "[/T]", "")
                 
         directory = get_directory(file.filename)
-        rename(file.filename, directory + '/' + name + file.get_file_extension())
+        newfilename = directory + '/' + name + file.get_file_extension()
+        rename(file.filename, newfilename)
+        file.update_filepath(newfilename)

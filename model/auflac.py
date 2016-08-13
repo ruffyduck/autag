@@ -11,6 +11,11 @@ class AuFlac(AuFile):
         super().__init__(filename, FLAC(filename))
 
 
+    def update_filepath(self, filepath):
+        self.filename = filepath
+        self.audio = FLAC(filepath)
+
+
     def get_images(self):
         return self.audio.pictures
 

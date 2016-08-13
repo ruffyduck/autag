@@ -1,7 +1,7 @@
 """Provides basic auto tag class"""
 
 from abc import abstractmethod
-from controller.filereader import list_files, MUSICFLAGS
+from controller.filereader import get_aufiles
 
 class AutoTag:
     """Abstract base class for auto tags"""
@@ -27,6 +27,6 @@ class AutoTag:
         if directory is None:
             return
 
-        files = list_files(directory, MUSICFLAGS)
+        files = get_aufiles(directory)
         for file in files:
             self.set_auto_value(file)

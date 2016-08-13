@@ -11,6 +11,11 @@ class AuMP3(AuFile):
         super().__init__(filename, ID3(filename))
 
 
+    def update_filepath(self, filepath):
+        self.filename = filepath
+        self.audio = ID3(filepath)
+
+        
     def get_images(self):
         pass
 
