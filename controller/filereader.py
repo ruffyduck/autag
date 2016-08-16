@@ -61,26 +61,35 @@ def list_files(directory, flags=None, reverse_flags=False):
     """Lists all files in committed path"""
     filelist = []
 
-    for file in listdir(directory):
-        if check_flags(file, flags) != reverse_flags:
-            filelist.append(directory + "/" + file)
+    try:
+        for file in listdir(directory):
+            if check_flags(file, flags) != reverse_flags:
+                filelist.append(directory + "/" + file)
+    except FileNotFoundError:
+        print("Invalid directory")
+        return []
 
     return filelist
 
 
 def count_files(filepath, flags):
     """Count files in committed path"""
-    counter = 0
+    if not path.exists(filepath):
+        return 0
 
+    counter = 0
     for file in listdir(filepath):
         if check_flags(file, flags):
             counter += 1
-
+                
     return counter
 
 
 def clean_directory(filepath, flags=None):
     """Remove all files in committed path depending on commited flags"""
+    if not path.exists(filepath):
+        return
+    
     for file in listdir(filepath):
         if not check_flags(file, flags):
             delete_file(filepath + "/" + file)

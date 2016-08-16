@@ -21,12 +21,6 @@ TAGS["CONTENTGROUP"] = BaseTag("Type", "CONTENTGROUP")
 TAGS["RATING"] = BaseTag("R#", "RATING")
 TAGS["ALBUM RATING"] = BaseTag("AR#", "ALBUM RATING")
 
-GENREMASK = set()
-GENREMASK.update(["Alternative, Ambient, Breakbeat, Conscious Rap", "Dirty South",
-                  "Dream Pop", "Folk", "Gansta Rap", "Garage Rock", "Hard Rock",
-                  "Hip-Hop", "House", "IDM", "Indie", "Jazz", "Jazz Rap", "Metal",
-                  "Neo-Psychedelia", "Post Rock", "Progressive Rock", "Psychedelic Rock",
-                  "R&B", "Shoegaze", "Synthpop", "Trip-Hop"])
 
 def get_tag(name):
     """Get Tag by name"""

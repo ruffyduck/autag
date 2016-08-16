@@ -10,7 +10,7 @@ class AuFile:
         self.filename = fileName
         self.audio = audio
         self.__tags = {}
-
+        self.del_flag = False
         self.read_tags()
 
 
@@ -45,23 +45,32 @@ class AuFile:
 
     def write_tag(self, basetag, value):
         """Write value of tag"""
-        self.__tags[basetag] = value
-        self.audio[basetag.tag] = value
+        if value is None or len(value) is 0:
+            self.delete_tag(basetag)
+
+        oldVal = self.get_tag_value(basetag)
+        if oldVal != value:  
+            self.__tags[basetag] = value
+            self.audio[basetag.tag] = value
 
 
     def delete_tag(self, basetag):
         """Deletes tag from file"""
-        if basetag in self.__tags:
+        value = self.__tags[basetag]
+        if basetag in self.__tags and not value is None and not len(value) is 0:
             del self.__tags[basetag]
+            self.del_flag = True
 
 
     def save_changes(self):
         """Save all additions/deletions to file"""
-        self.audio.delete()
 
-        for tag in self.__tags:
-            if not self.__tags[tag] is None:
-                self.audio[tag.tag] = self.__tags[tag]
+        if self.del_flag:
+            self.del_flag = False
+            self.audio.delete()
+            for tag in self.__tags:
+                if not self.__tags[tag] is None:
+                    self.audio[tag.tag] = self.__tags[tag]
 
         self.audio.save()
 

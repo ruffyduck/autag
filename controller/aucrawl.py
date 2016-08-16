@@ -3,25 +3,32 @@
 import discogs_client
 from controller.autag import AutoTag
 from controller.filereader import get_aufiles
-from model.basetag import get_tag, GENREMASK
+from model.basetag import get_tag
 
 class AutoCrawler(AutoTag):
     """Class that can tag via crawling Discogs. Artist and album tags have to be available
     to produce the results in the database. Tags that can be crawled currently: 
     Genre, Label, Year"""
 
-    def __init__(self, token, tags):
+    def __init__(self, token, tags, filtermask={}):
         self.tags = tags
         self.client = discogs_client.Client("AuTag", user_token=token)
-
+        self.filtermask = filtermask
+        
 
     def __get_tag_value(self, master, tag):
+        if tag.tag in self.filtermask:
+            mask = self.filtermask[tag.tag]
+        else:
+            mask = None
+
         if tag is get_tag("GENRE"):
             if not master.styles is None:
                 for genre in master.styles:
-                    #Lazy genre filtering. TODO: make this less lazy
-                    if genre in GENREMASK:
-                        return genre
+                    #print(genre)
+                    #print(mask)
+                    if not mask is None and genre in mask:
+                        return mask[genre]
         elif tag is get_tag("ORGANIZATION"):
             release = master.main_release
             if not release.labels is None:

@@ -102,7 +102,7 @@
 	    "applicants": [
 		"Indie",
 		"Indie Rock",
-		"Indie Pop"
+		"Indie Pop",
 	    ]
 	},
 	{
@@ -134,7 +134,7 @@
 	    "value": "Post-Rock",
 	    "applicants": [
 		"Post-Rock",
-		"Post Rock"
+		"Post Rock",
 	    ]
 	},	 
 	{
@@ -168,7 +168,7 @@
 	    "applicants": [
 		"Shoegaze"
 	    ]
-	},
+	}
 	{
 	    "value": "Synthpo",
 	    "applicants": [
@@ -179,27 +179,14 @@
 		"Indietronica",
 		"Synth"
 	    ]
-	},
+	}
 	{
 	    "value": "Trip-Hop",
 	    "applicants": [
 		"Trip-Hop",
-		"Trip Hop"
+		"Trip Hop",
 	    ]
 	}]
 	
-    },
-    "TITLE": {
-	"partial": "True",
-	"list": [{
-	    "value": "ft.",
-	    "applicants": [
-		"feat",
-		"feat.",
-		"ft",
-		"featuring",
-		"Featuring"
-	    ]
-	}]
     }
 }

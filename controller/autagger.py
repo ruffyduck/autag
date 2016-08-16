@@ -45,4 +45,3 @@ class AutoTagger:
 
         #for file in files:
         #    file.save_changes()
-        #    pass
