@@ -25,7 +25,7 @@ class AuGUI:
         self.entries = []
 
         self.__build_entries([["TRACKNUMBER", 2], ["DISCNUMBER", 2], ["TITLE", 30],
-                              ["ARTIST", 20], ["ALBUM", 20], ["GENRE", 10], ["DATE", 5],
+                              ["artist", 20], ["ALBUM", 20], ["GENRE", 10], ["DATE", 5],
                               ["ORGANIZATION", 15], ["CONTENTGROUP", 5], ["QUALITY", 10],
                               ["COMMENT", 10], ["RATING", 3]])
 

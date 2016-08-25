@@ -25,6 +25,9 @@ class ReplaceTag(AutoTag):
     def __replace_partial(self, file):
         """Replaces only relevant portion of the tag"""
         value = file.get_tag_value(self.tag)
+
+        if value is None:
+            return
         
         for entry in self.dictionary:
             if (entry + ' ') in value:

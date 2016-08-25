@@ -9,7 +9,7 @@ class AuFile:
     def __init__(self, fileName=None, audio=None):
         self.filename = fileName
         self.audio = audio
-        self.__tags = {}
+        self._tags = {}
         self.del_flag = False
         self.read_tags()
 
@@ -21,15 +21,15 @@ class AuFile:
 
         for tag in self.audio.tags:
             basetag = get_tag(tag[0])
-            self.__tags[basetag] = tag[1]
+            self._tags[basetag] = tag[1]
 
 
     def get_tag_value(self, basetag):
         """Get value of commited base tag"""
-        if not basetag in self.__tags:
-            self.__tags[basetag] = None
-
-        return self.__tags[basetag]
+        if not basetag in self._tags:            
+            self._tags[basetag] = None
+            
+        return self._tags[basetag]
 
 
     def get_tag_value_by_name(self, tagname):
@@ -40,25 +40,31 @@ class AuFile:
 
     def tag_iterator(self):
         """Returns an iterator of the file's tags"""
-        return iter(self.__tags)
+        return iter(self._tags)
+
+
+    @abstractmethod
+    def _write_audio_tag(self, tag, value):
+        """Write tag into the underlying file structure"""
+        pass
 
 
     def write_tag(self, basetag, value):
         """Write value of tag"""
         if value is None or len(value) is 0:
             self.delete_tag(basetag)
-
+            
         oldVal = self.get_tag_value(basetag)
         if oldVal != value:  
-            self.__tags[basetag] = value
-            self.audio[basetag.tag] = value
+            self._tags[basetag] = value
+            self._write_audio_tag(basetag.tag, value)
 
 
     def delete_tag(self, basetag):
         """Deletes tag from file"""
-        value = self.__tags[basetag]
-        if basetag in self.__tags and not value is None and not len(value) is 0:
-            del self.__tags[basetag]
+        value = self._tags[basetag]
+        if basetag in self._tags and not value is None and not len(value) is 0:
+            del self._tags[basetag]
             self.del_flag = True
 
 
@@ -68,9 +74,9 @@ class AuFile:
         if self.del_flag:
             self.del_flag = False
             self.audio.delete()
-            for tag in self.__tags:
-                if not self.__tags[tag] is None:
-                    self.audio[tag.tag] = self.__tags[tag]
+            for tag in self._tags:
+                if not self._tags[tag] is None:
+                    self._write_audio_tag(tag.tag, self._tags[tag])
 
         self.audio.save()
 

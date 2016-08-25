@@ -11,6 +11,10 @@ class AuFlac(AuFile):
         super().__init__(filename, FLAC(filename))
 
 
+    def _write_audio_tag(self, tag, value):
+        self.audio[tag] = value
+
+
     def update_filepath(self, filepath):
         self.filename = filepath
         self.audio = FLAC(filepath)

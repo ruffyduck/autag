@@ -24,6 +24,7 @@ TAGS["ALBUM RATING"] = BaseTag("AR#", "ALBUM RATING")
 
 def get_tag(name):
     """Get Tag by name"""
+    name = name.upper()
     if not name in TAGS:
         create_tag(name)
 

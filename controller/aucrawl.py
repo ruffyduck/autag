@@ -25,8 +25,6 @@ class AutoCrawler(AutoTag):
         if tag is get_tag("GENRE"):
             if not master.styles is None:
                 for genre in master.styles:
-                    #print(genre)
-                    #print(mask)
                     if not mask is None and genre in mask:
                         return mask[genre]
         elif tag is get_tag("ORGANIZATION"):

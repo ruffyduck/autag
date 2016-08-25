@@ -21,8 +21,8 @@ AUTO_TAG = AutoTagger()
 AUTO_TAG.add_auto_tags([AutoImage(),
                         AutoCleanup(),
                         AutoNumbers(),
-                        AutoCrawler("UVtLSggkngYRiFHyFSdnjrgaFufcXmWIjrhiPkiN",
-                                    [get_tag("GENRE"), get_tag("ORGANIZATION")], AUDICTS),
+                        #AutoCrawler("UVtLSggkngYRiFHyFSdnjrgaFufcXmWIjrhiPkiN",
+                        #            [get_tag("GENRE"), get_tag("ORGANIZATION")], AUDICTS),
                         ReplaceTag(AUDICTS["GENRE"], get_tag("GENRE")),
                         ReplaceTag(AUDICTS["TITLE"], get_tag("TITLE")),
                         AutoRemoval("resources/autoremove.json"),
@@ -30,7 +30,7 @@ AUTO_TAG.add_auto_tags([AutoImage(),
 
 AUTO_FILE = AutoTagger()
 AUTO_FILE.add_auto_tags([AutoRename(),
-                         AutoMove("C:/")])
+                         AutoMove("D:/Musik/")])
 
 gui = AuGUI(AUTO_TAG, AUTO_FILE)
 gui.draw()

@@ -30,7 +30,7 @@ class TagEntry:
 
         self.entries = []
         for file in files:
-            value = file.get_tag_value(self.tag)
+            value = file.get_tag_value(self.tag)            
             newentry = Entry(self.parent, width=self.width)
         
             if not value is None:
@@ -44,7 +44,8 @@ class TagEntry:
 
     def write_files(self):
         for file, entry in zip(self.currfiles, self.entries):
-            file.write_tag(self.tag, entry.get())
+            if len(entry.get()) > 0:
+                file.write_tag(self.tag, entry.get())
 
 
 class SingleTagEntry:
