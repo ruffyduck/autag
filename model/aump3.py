@@ -1,8 +1,7 @@
 """Module that provides mp3 file functionality"""
 
-from mutagen.mp3 import EasyMP3 as MP3
-from mutagen.easyid3 import EasyID3
-from mutagen.id3 import ID3
+from mutagen.mp3 import EasyMP3, MP3
+from mutagen.id3 import ID3, APIC
 from model.basetag import get_tag
 from model.aufile import AuFile
 
@@ -10,7 +9,8 @@ class AuMP3(AuFile):
     """Class that represents music files in mp3 format"""
 
     def __init__(self, filename=None):
-        super().__init__(filename, MP3(filename))
+        super().__init__(filename, EasyMP3(filename))
+        self.__mp3 = MP3(filename)
         self.__valid_keys = ["title", "artist", "albumartist", "album", "genre",
                              "date", "organization", "tracknumber", "discnumber"]
 
@@ -29,8 +29,8 @@ class AuMP3(AuFile):
 
         if tag in self.__valid_keys:
             self.audio[tag.lower()] = value
-        else:
-            print("Tag '" + tag + "' not supported in mp3")
+        #else:
+        #    print("Tag '" + tag + "' not supported in mp3")
 
 
     def update_filepath(self, filepath):
@@ -39,15 +39,27 @@ class AuMP3(AuFile):
 
         
     def get_images(self):
-        pass
+        images = [tag for tag in self.__mp3.keys() if 'APIC' in tag]
+        return images
 
 
     def add_image(self, imagefile, covertype=3):
-        pass
+        image = APIC()
+        image.type = covertype
+
+        with open(imagefile, 'rb') as fstream:
+            image.data = fstream.read()
+
+        self.__mp3.tags.add(image)
+        self.__mp3.save()
 
 
     def remove_images(self):
-        pass
+        images = [tag for tag in self.__mp3.keys() if 'APIC' in tag]
+        for image in images:
+            del self.__mp3[image]
+
+        self.__mp3.save()
 
 
     def get_file_extension(self):
