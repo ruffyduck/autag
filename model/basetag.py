@@ -1,5 +1,6 @@
 """Provides functionality for basic tags"""
 
+
 class BaseTag:
     """Class that represent a basic tag"""
 
@@ -25,7 +26,7 @@ TAGS["ALBUM RATING"] = BaseTag("AR#", "ALBUM RATING")
 def get_tag(name):
     """Get Tag by name"""
     name = name.upper()
-    if not name in TAGS:
+    if name not in TAGS:
         create_tag(name)
 
     return TAGS[name]
@@ -39,4 +40,3 @@ def create_tag(tag):
     name = ''.join(nameli)
 
     TAGS[tag] = BaseTag(name, tag)
-

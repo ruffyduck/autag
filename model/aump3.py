@@ -35,7 +35,7 @@ class AuMP3(AuFile):
 
     def update_filepath(self, filepath):
         self.filename = filepath
-        self.audio = MP3(filepath)
+        self.audio = EasyMP3(filepath)
 
         
     def get_images(self):

@@ -3,6 +3,7 @@
 from abc import abstractmethod
 from model.basetag import get_tag
 
+
 class AuFile:
     """Class that represents music files"""
 
@@ -13,7 +14,6 @@ class AuFile:
         self.del_flag = False
         self.read_tags()
 
-
     def read_tags(self):
         """Read and import all tags for file"""
         if self.audio.tags is None:
@@ -23,31 +23,26 @@ class AuFile:
             basetag = get_tag(tag[0])
             self._tags[basetag] = tag[1]
 
-
     def get_tag_value(self, basetag):
         """Get value of commited base tag"""
         if not basetag in self._tags:            
             self._tags[basetag] = None
-            
-        return self._tags[basetag]
 
+        return self._tags[basetag]
 
     def get_tag_value_by_name(self, tagname):
         """Get value by tags name"""
         basetag = get_tag(tagname)
         return self.get_tag_value(basetag)
 
-
     def tag_iterator(self):
         """Returns an iterator of the file's tags"""
         return iter(self._tags)
-
 
     @abstractmethod
     def _write_audio_tag(self, tag, value):
         """Write tag into the underlying file structure"""
         pass
-
 
     def write_tag(self, basetag, value):
         """Write value of tag"""
@@ -55,10 +50,9 @@ class AuFile:
             self.delete_tag(basetag)
             
         oldVal = self.get_tag_value(basetag)
-        if oldVal != value:  
+        if oldVal != value:
             self._tags[basetag] = value
             self._write_audio_tag(basetag.tag, value)
-
 
     def delete_tag(self, basetag):
         """Deletes tag from file"""
@@ -66,7 +60,6 @@ class AuFile:
         if basetag in self._tags and not value is None and not len(value) is 0:
             del self._tags[basetag]
             self.del_flag = True
-
 
     def save_changes(self):
         """Save all additions/deletions to file"""
@@ -80,30 +73,25 @@ class AuFile:
 
         self.audio.save()
 
-
     def print_tags(self):
         """Output all tags of file"""
         print(self.audio.tags)
-
 
     @abstractmethod
     def update_filepath(self, filepath):
         """Updates file path of this file"""
         pass
 
-
     @abstractmethod
     def get_images(self):
         """Get a list of all embedded images"""
         pass
-
 
     @abstractmethod
     def add_image(self, imagefile, covertype=3):
         """Adds album art to the file depending on type
         e.g. type 3 means front cover"""
         pass
-
 
     @abstractmethod
     def remove_images(self):
@@ -113,4 +101,4 @@ class AuFile:
     @abstractmethod
     def get_file_extension(self):
         """Returns extension of file"""
-        pass   
+        pass

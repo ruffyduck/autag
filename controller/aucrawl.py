@@ -14,7 +14,6 @@ class AutoCrawler(AutoTag):
         self.tags = tags
         self.client = discogs_client.Client("AuTag", user_token=token)
         self.filtermask = filtermask
-        
 
     def __get_tag_value(self, master, tag):
         if tag.tag in self.filtermask:
@@ -37,7 +36,6 @@ class AutoCrawler(AutoTag):
 
         return None
 
-
     def __get_master(self, file):
         artist = file.get_tag_value_by_name("ARTIST")
         album = file.get_tag_value_by_name("ALBUM")
@@ -46,19 +44,23 @@ class AutoCrawler(AutoTag):
             return
 
         results = self.client.search(artist + ' ' + album, type='master')
-        return results[0]
 
+        if len(results) is 0:
+            return None
+
+        return results[0]
 
     def set_auto_value(self, file=None):
         if file is None:
             return
 
         master = self.__get_master(file)
-        for tag in self.tags:
-            value = self.__get_tag_value(master, tag)
-            if not value is None:
-                file.write_tag(tag, value)
 
+        if master is not None:
+            for tag in self.tags:
+                value = self.__get_tag_value(master, tag)
+                if value is not None:
+                    file.write_tag(tag, value)
 
     def multiset_auto_value(self, files=None):
         if files is None or len(files) is 0:
@@ -66,12 +68,13 @@ class AutoCrawler(AutoTag):
 
         protofile = files[0]
         master = self.__get_master(protofile)
-        for tag in self.tags:
-            value = self.__get_tag_value(master, tag)
-            if not value is None:
-                for file in files:
-                    file.write_tag(tag, value)
 
+        if master is not None:
+            for tag in self.tags:
+                value = self.__get_tag_value(master, tag)
+                if value is not None:
+                    for file in files:
+                        file.write_tag(tag, value)
 
     def directory_auto_value(self, directory=None):
         if directory is None:
@@ -79,5 +82,3 @@ class AutoCrawler(AutoTag):
 
         files = get_aufiles(directory)
         self.multiset_auto_value(files)
-
-

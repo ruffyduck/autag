@@ -192,11 +192,13 @@
     "TITLE": {
 	"partial": "True",
 	"list": [{
-	    "value": "ft.",
+	    "value": "ft",
 	    "applicants": [
 		"feat",
 		"feat.",
-		"ft",
+		"Feat.",
+		"ft.",
+		"Ft.",
 		"featuring",
 		"Featuring"
 	    ]

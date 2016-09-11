@@ -6,6 +6,7 @@ from fnmatch import fnmatch
 from model.auflac import AuFlac
 from model.aump3 import AuMP3
 
+ILLEGAL_CHARACTERS = ['/', '?', '*', '<', '>', '|', '"']
 MUSICFLAGS = [".flac", ".mp3"]
 IMAGEFLAGS = [".png", ".jpg"]
 AUFILES = {}
@@ -48,13 +49,13 @@ def move_aufile(filesrc, filetarget):
     Directory must exist"""
     file = get_aufile(filesrc)
 
-    if not file is None:
+    if file is not None:
         move(filesrc, filetarget)
         file.update_filepath(filetarget)
         AUFILES[filetarget] = file
 
-        #if not AUFILES.get(filesrc) is None:
-        #    del[AUFILES[filesrc]]
+#       if not AUFILES.get(filesrc) is None:
+#           del[AUFILES[filesrc]]
 
 
 def list_files(directory, flags=None, reverse_flags=False):
@@ -81,7 +82,7 @@ def count_files(filepath, flags):
     for file in listdir(filepath):
         if check_flags(file, flags):
             counter += 1
-                
+
     return counter
 
 
@@ -89,7 +90,7 @@ def clean_directory(filepath, flags=None):
     """Remove all files in committed path depending on commited flags"""
     if not path.exists(filepath):
         return
-    
+
     for file in listdir(filepath):
         if not check_flags(file, flags):
             delete_file(filepath + "/" + file)
@@ -117,16 +118,16 @@ def delete_empty_directories(directory, child=None):
     """Deletes given directory and its parent directories if they are empty"""
     if not path.exists(directory):
         return
-    
+
     files = list_files(directory)
-    #Delete folder if it is empty
+#   Delete folder if it is empty
     if len(files) is 0:
         rmdir(directory)
         delete_empty_directories(get_directory(directory), directory)
-    #Delete folder if the only content is the previously deleted folder.
-    #This is necessary because that folder might not be deleted in time.
+#   Delete folder if the only content is the previously deleted folder.
+#   This is necessary because that folder might not be deleted in time.
     elif len(files) is 1 and files[0] == child:
-        rmtree(diretory)
+        rmtree(directory)
         delete_empty_directories(get_directory(directory), directory)
 
 
@@ -137,3 +138,10 @@ def delete_file(file, del_children=False):
     except OSError:
         if del_children:
             rmtree(file)
+
+
+def remove_illegal_chars(name):
+    for illegal_char in ILLEGAL_CHARACTERS:
+        name = name.replace(illegal_char, '')
+
+    return name
