@@ -1,17 +1,17 @@
 """Module that provides the main entry point for the GUI"""
 
-from tkinter import *
+from tkinter import Button, mainloop, Tk
 import tkinter.filedialog
 from view.tagentry import TagEntry, SingleTagEntry
 from view.gridmanager import GridManager
-from model.basetag import BaseTag, get_tag
-from controller.filereader import list_files, get_aufiles, MUSICFLAGS
+from model.basetag import get_tag
+from controller.filereader import get_aufiles
 
 
 class AuGUI:
-    """Serves as main entry point for the GUI. Autotaggers can be comitted that 
-    control automatic tagging on tags(will be called on open) and on files(will be called 
-    on write)"""
+    """Serves as main entry point for the GUI. Autotaggers can be comitted that
+    control automatic tagging on tags(will be called on open) and on files
+    (will be called on write)"""
 
     def __init__(self, tagactions, fileactions):
         self.tagactions = tagactions
@@ -25,9 +25,10 @@ class AuGUI:
         self.entries = []
         self.curr_directories = []
 
-        self.__build_entries([["TRACKNUMBER", 2], ["DISCNUMBER", 2], ["TITLE", 30],
-                              ["artist", 20], ["ALBUM", 20], ["GENRE", 10], ["DATE", 5],
-                              ["ORGANIZATION", 15], ["CONTENTGROUP", 5], ["QUALITY", 10],
+        self.__build_entries([["TRACKNUMBER", 2], ["DISCNUMBER", 2],
+                              ["TITLE", 30], ["artist", 20], ["ALBUM", 20],
+                              ["GENRE", 10], ["DATE", 5], ["ORGANIZATION", 15],
+                              ["CONTENTGROUP", 5], ["QUALITY", 10],
                               ["COMMENT", 10], ["RATING", 3]])
 
         self.__build_single_entries([["TRACKTOTAL", 0, 2], ["DISCTOTAL", 1, 2],

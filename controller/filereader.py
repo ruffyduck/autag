@@ -1,4 +1,5 @@
-"""Helper module that provides functionality for file and directory management"""
+"""Helper module that provides functionality for file
+and directory management"""
 
 from os import listdir, remove, path, rmdir
 from shutil import rmtree, move
@@ -16,17 +17,17 @@ def get_aufile(filepath):
     """Returns an AuFile from given filepath"""
 
     aufile = AUFILES.get(filepath)
-    if not aufile is None:
+    if aufile is not None:
         return aufile
 
     if filepath.endswith(".flac"):
-        aufile =  AuFlac(filepath)
+        aufile = AuFlac(filepath)
     elif filepath.endswith(".mp3"):
         aufile = AuMP3(filepath)
-        
-    if not aufile is None:
+
+    if aufile is not None:
         AUFILES[aufile.filename] = aufile
-        
+
     return aufile
 
 
@@ -38,7 +39,7 @@ def get_aufiles(directory):
     for musicfile in musicfiles:
         aufile = get_aufile(musicfile)
 
-        if not aufile is None:
+        if aufile is not None:
             aufiles.append(aufile)
 
     return aufiles

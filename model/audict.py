@@ -3,6 +3,7 @@
 import json
 from model.basetag import get_tag
 
+
 class AuDict(dict):
     """Dictionary for value correction"""
 
@@ -11,17 +12,14 @@ class AuDict(dict):
         self.tag = None
         self.partial = partial
 
-
     def set_base_tag(self, basetag):
         """Sets basic tag"""
         self.tag = basetag
-
 
     def add_auto_value(self, value, applicants):
         """Adds new auto value to dictionary"""
         for applicant in applicants:
             self[applicant] = value
-
 
 
 def build_auto_dicts(jsonfile):

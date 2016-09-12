@@ -25,7 +25,7 @@ class AuFile:
 
     def get_tag_value(self, basetag):
         """Get value of commited base tag"""
-        if not basetag in self._tags:            
+        if basetag not in self._tags:
             self._tags[basetag] = None
 
         return self._tags[basetag]
@@ -48,7 +48,7 @@ class AuFile:
         """Write value of tag"""
         if value is None or len(value) is 0:
             self.delete_tag(basetag)
-            
+
         oldVal = self.get_tag_value(basetag)
         if oldVal != value:
             self._tags[basetag] = value
@@ -57,7 +57,7 @@ class AuFile:
     def delete_tag(self, basetag):
         """Deletes tag from file"""
         value = self._tags[basetag]
-        if basetag in self._tags and not value is None and not len(value) is 0:
+        if basetag in self._tags and value is not None and not len(value) is 0:
             del self._tags[basetag]
             self.del_flag = True
 

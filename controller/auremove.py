@@ -4,6 +4,7 @@ import json
 from controller.autag import AutoTag
 from model.basetag import get_tag
 
+
 class AutoRemoval(AutoTag):
     """Class that can remove tags automatically dependinding on flags"""
 
@@ -11,9 +12,8 @@ class AutoRemoval(AutoTag):
         super().__init__()
         self.flags = set()
 
-        if not scheme is None:
+        if scheme is not None:
             self.read_flags(scheme)
-
 
     def read_flags(self, jsonfile):
         """Read flags from json file"""
@@ -25,7 +25,6 @@ class AutoRemoval(AutoTag):
 
             for flag in flaglist:
                 self.flags.add(get_tag(flag))
-        
 
     def set_auto_value(self, file=None):
         if file is None:
@@ -33,7 +32,7 @@ class AutoRemoval(AutoTag):
 
         rmtags = []
         for tag in file.tag_iterator():
-            if not tag in self.flags:
+            if tag not in self.flags:
                 rmtags.append(tag)
 
         for tag in rmtags:

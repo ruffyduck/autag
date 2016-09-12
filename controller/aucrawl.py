@@ -5,10 +5,11 @@ from controller.autag import AutoTag
 from controller.filereader import get_aufiles
 from model.basetag import get_tag
 
+
 class AutoCrawler(AutoTag):
-    """Class that can tag via crawling Discogs. Artist and album tags have to be available
-    to produce the results in the database. Tags that can be crawled currently: 
-    Genre, Label, Year"""
+    """Class that can tag via crawling Discogs. Artist and album
+    tags have to be available to produce the results in the database.
+    Tags that can be crawled currently: Genre, Label, Year"""
 
     def __init__(self, token, tags, filtermask={}):
         self.tags = tags
@@ -22,13 +23,13 @@ class AutoCrawler(AutoTag):
             mask = None
 
         if tag is get_tag("GENRE"):
-            if not master.styles is None:
+            if master.styles is not None:
                 for genre in master.styles:
-                    if not mask is None and genre in mask:
+                    if mask is not None and genre in mask:
                         return mask[genre]
         elif tag is get_tag("ORGANIZATION"):
             release = master.main_release
-            if not release.labels is None:
+            if release.labels is not None:
                 return release.labels[0].name
         elif tag is get_tag("DATE"):
             release = master.main_release
