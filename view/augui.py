@@ -18,7 +18,11 @@ class AuGUI:
         self.fileactions = fileactions
         self.master = Tk()
         self.master.wm_title("AuTag")
-        self.master.iconbitmap(default="resources/img.ico")
+        
+        try:
+            self.master.iconbitmap('resources/img.ico')
+        except Exception as e:
+            print(e)
 
         self.manager = GridManager()
         self.musicfiles = []
