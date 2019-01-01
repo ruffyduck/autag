@@ -47,11 +47,11 @@ class AuGUI:
                        command=self.__open_callback)
         opend.grid(row=0, column=3)
 
-        nextd = Button(self.master, text="next", width=10,
+        nextd = Button(self.master, text="apply/open", width=10,
                        command=self.__next_callback)
         nextd.grid(row=0, column=4)
 
-        writed = Button(self.master, text="write", width=10,
+        writed = Button(self.master, text="apply", width=10,
                         command=self.__write_callback)
         writed.grid(row=0, column=5)
 
