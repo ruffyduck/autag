@@ -13,7 +13,7 @@ class AuGUI:
     control automatic tagging on tags(will be called on open) and on files
     (will be called on write)"""
 
-    def __init__(self, tagactions, fileactions):
+    def __init__(self, tagactions, fileactions, directory):
         self.tagactions = tagactions
         self.fileactions = fileactions
         self.master = Tk()
@@ -58,6 +58,12 @@ class AuGUI:
         for entry in self.entries:
             entry.draw()
 
+        if directory is not None:
+            try:
+                self.__tag_new_entries(directory)
+            except Exception as e:
+                print(e)
+
     def __build_entries(self, tagpairs):
         counter = -1
         for pair in tagpairs:
@@ -66,23 +72,22 @@ class AuGUI:
             width = pair[1]
 
             self.entries.append(TagEntry(get_tag(name),
-                                         self.master, self.manager,
-                                         counter, width))
+                 self.master, self.manager, counter, width))
 
     def __build_single_entries(self, entryinfos):
-
         for info in entryinfos:
             name = info[0]
             row = info[1]
             width = info[2]
 
             self.entries.append(SingleTagEntry(get_tag(name),
-                                               self.master,
-                                               self.manager, row, width))
+                self.master, self.manager, row, width))
+    
+    def __get_directory(self):
+        return tkinter.filedialog.askdirectory()
 
-    def __tag_new_entries(self):
+    def __tag_new_entries(self, curr_dir):
         self.manager.reset()
-        curr_dir = tkinter.filedialog.askdirectory()
         self.curr_directories.append(curr_dir)
         self.musicfiles = get_aufiles(curr_dir)
 
@@ -94,7 +99,7 @@ class AuGUI:
 
     def __open_callback(self):
         self.curr_directories = []
-        self.__tag_new_entries()
+        self.__tag_new_entries(self.__get_directory())
 
     def __next_callback(self):
         for entry in self.entries:
@@ -103,7 +108,7 @@ class AuGUI:
         for file in self.musicfiles:
             file.save_changes()
 
-        self.__tag_new_entries()
+        self.__tag_new_entries(self.__get_directory())
 
     def __write_callback(self):
         self.manager.reset()

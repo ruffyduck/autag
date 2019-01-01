@@ -1,6 +1,6 @@
 """Entry point for AuTag"""
 
-import sys
+import sys, getopt
 from controller.auclean import AutoCleanup
 from controller.aucrawl import AutoCrawler
 from controller.audefault import AutoDefault
@@ -17,25 +17,39 @@ from view.augui import AuGUI
 
 
 def main(argv):
-	AUDICTS = build_auto_dicts("resources/autodicts.json")
-	AUTO_TAG = AutoTagger()
-	AUTO_TAG.add_auto_tags([AutoImage(), AutoCleanup(), AutoNumbers(),
+
+	try:
+		opts, args = getopt.getopt(argv, "hd:", ["-help","directory="])
+	except getopt.GetoptError as e:
+		print(e)
+		sys.exit(2)
+
+	dir = None
+	for opt, arg in opts:
+		if opt == '-h':
+			print("Pass '-d' or 'directory=' to tag files in given directory")
+			sys.exit();
+		elif opt in ('-d', '-directory'):
+			dir = arg
+
+	audicts = build_auto_dicts("resources/autodicts.json")
+	auto_tag = AutoTagger()
+	auto_tag.add_auto_tags([AutoImage(), AutoCleanup(), AutoNumbers(),
 	                        AutoCrawler("UVtLSggkngYRiFHyFSdnjrgaFufcXmWIjrhiPkiN",
 	                                    [get_tag("GENRE"),
 	                                     get_tag("ORGANIZATION")],
-	                                    AUDICTS),
-	                        ReplaceTag(AUDICTS["GENRE"], get_tag("GENRE")),
-	                        ReplaceTag(AUDICTS["TITLE"], get_tag("TITLE")),
+	                                    audicts),
+	                        ReplaceTag(audicts["GENRE"], get_tag("GENRE")),
+	                        ReplaceTag(audicts["TITLE"], get_tag("TITLE")),
 	                        AutoRemoval("resources/autoremove.json"),
 	                        AutoDefault("resources/defaultvalues.json")])
 
-	AUTO_FILE = AutoTagger()
-	AUTO_FILE.add_auto_tags([AutoRename()])  #, AutoMove("D:/Musik/")])
+	auto_file = AutoTagger()
+	auto_file.add_auto_tags([AutoRename()])  #, AutoMove("D:/Musik/")])
 
-	gui = AuGUI(AUTO_TAG, AUTO_FILE)
+	gui = AuGUI(auto_tag, auto_file, dir)
 	gui.draw()
 
 
-
 if __name__== "__main__":
-	main(sys.argv);
+	main(sys.argv[1:]);
