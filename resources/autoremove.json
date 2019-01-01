@@ -17,6 +17,7 @@
 	"DISCNUMBER",
 	"TOTALDISCS",
 	"DISCTOTAL",
-	"COMMENT"
+	"COMMENT",
+	"SOURCE"
     ]
 }

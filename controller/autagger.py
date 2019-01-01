@@ -40,5 +40,5 @@ class AutoTagger:
         for autag in self.autags:
             autag.directory_auto_value(directory)
 
-        #for file in files:
-        #    file.save_changes()
+        for file in files:
+            file.save_changes()
