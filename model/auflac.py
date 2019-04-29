@@ -8,7 +8,7 @@ from autag.model.aufile import AuFile
 class AuFlac(AuFile):
     """Class that represents music files in FLAC format"""
 
-    def __init__(self, filename=None):
+    def __init__(self, filename = None):
         super().__init__(filename, FLAC(filename))
 
     def _write_audio_tag(self, tag, value):
@@ -21,7 +21,7 @@ class AuFlac(AuFile):
     def get_images(self):
         return self.audio.pictures
 
-    def add_image(self, imagefile, covertype=3):
+    def add_image(self, imagefile, covertype = 3):
         image = Picture()
         image.type = covertype
 

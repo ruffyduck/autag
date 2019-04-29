@@ -5,14 +5,14 @@ from autag.controller.autag import AutoTag
 
 class ReplaceTag(AutoTag):
     """Auto tag that replaces values in files depending
-    on commited dictionary"""
+    on committed dictionary"""
 
-    def __init__(self, dictionary=None, tag=None):
+    def __init__(self, dictionary = None, tag = None):
         super().__init__()
         self.tag = tag
         self.dictionary = dictionary
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 

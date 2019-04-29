@@ -9,7 +9,7 @@ from autag.model.aufile import AuFile
 class AuMP3(AuFile):
     """Class that represents music files in mp3 format"""
 
-    def __init__(self, filename=None):
+    def __init__(self, filename = None):
         super().__init__(filename, EasyMP3(filename))
         self.__mp3 = MP3(filename)
         self.__valid_keys = ["title", "artist", "albumartist", "album",

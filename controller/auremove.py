@@ -8,7 +8,7 @@ from autag.model.basetag import get_tag
 class AutoRemoval(AutoTag):
     """Class that can remove tags automatically dependinding on flags"""
 
-    def __init__(self, scheme=None):
+    def __init__(self, scheme = None):
         super().__init__()
         self.flags = set()
 
@@ -26,7 +26,7 @@ class AutoRemoval(AutoTag):
             for flag in flaglist:
                 self.flags.add(get_tag(flag))
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 

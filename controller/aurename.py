@@ -10,7 +10,7 @@ class AutoRename(AutoTag):
     """Class that allows user-defined file renaming with tags in file
     Example: '$ARTIST% - $TITLE%' would produce 'The Beatles - Yesterday'"""
 
-    def __init__(self, scheme="$TRACKNUMBER% $ARTIST% - $TITLE%"):
+    def __init__(self, scheme = "$TRACKNUMBER% $ARTIST% - $TITLE%"):
         super().__init__()
 
         self.scheme = scheme.replace("$", "[T]").replace("%", "[/T]")
@@ -19,7 +19,7 @@ class AutoRename(AutoTag):
         for tag in re.findall(regex, self.scheme):
             self.tags.add(tag)
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 

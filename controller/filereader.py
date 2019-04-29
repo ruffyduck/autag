@@ -59,7 +59,7 @@ def move_aufile(filesrc, filetarget):
 #           del[AUFILES[filesrc]]
 
 
-def list_files(directory, flags=None, reverse_flags=False):
+def list_files(directory, flags = None, reverse_flags = False):
     """Lists all files in committed path"""
     filelist = []
 
@@ -87,7 +87,7 @@ def count_files(filepath, flags):
     return counter
 
 
-def clean_directory(filepath, flags=None):
+def clean_directory(filepath, flags = None):
     """Remove all files in committed path depending on commited flags"""
     if not path.exists(filepath):
         return
@@ -115,7 +115,7 @@ def get_directory(file):
     return path.dirname(file)
 
 
-def delete_empty_directories(directory, child=None):
+def delete_empty_directories(directory, child = None):
     """Deletes given directory and its parent directories if they are empty"""
     if not path.exists(directory):
         return
@@ -132,7 +132,7 @@ def delete_empty_directories(directory, child=None):
         delete_empty_directories(get_directory(directory), directory)
 
 
-def delete_file(file, del_children=False):
+def delete_file(file, del_children = False):
     """Delete commited file or directory"""
     try:
         remove(file)

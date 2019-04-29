@@ -46,6 +46,7 @@ def main(argv):
 
 	auto_file = AutoTagger()
 	auto_file.add_auto_tags([AutoRename()])  #, AutoMove("D:/Musik/")])
+	print("Done")
 
 
 if __name__== "__main__":

@@ -14,14 +14,14 @@ class AutoNumbers(AutoTag):
         self.numbtag = get_tag("TRACKNUMBER")
         self.totatag = get_tag("TRACKTOTAL")
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 
         file.write_tag(self.numbtag, "1")
         file.write_tag(self.totatag, "1")
 
-    def multiset_auto_value(self, files=None):
+    def multiset_auto_value(self, files = None):
         if files is None:
             return
 
@@ -32,7 +32,7 @@ class AutoNumbers(AutoTag):
             file.write_tag(self.totatag, total)
             count += 1
 
-    def directory_auto_value(self, directory=None):
+    def directory_auto_value(self, directory = None):
         if directory is None:
             return
 

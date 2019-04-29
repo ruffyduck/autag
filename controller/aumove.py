@@ -13,9 +13,9 @@ class AutoMove(AutoTag):
     """Class that allows automatic moving of files into
     user-defined folder structures"""
 
-    def __init__(self, parentdirectory="",
-                 scheme="$GENRE%/$ARTIST%/$DATE% - $ALBUM%/",
-                 keepfiles=[".log", ".m3u"]):
+    def __init__(self, parentdirectory = "",
+                 scheme = "$GENRE%/$ARTIST%/$DATE% - $ALBUM%/",
+                 keepfiles = [".log", ".m3u"]):
         super().__init__()
 
         self.keepfiles = keepfiles
@@ -57,7 +57,7 @@ class AutoMove(AutoTag):
             filesrc = targetdir + filename
             shutil.move(file, filesrc)
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 
@@ -71,7 +71,7 @@ class AutoMove(AutoTag):
         move_aufile(file.filename, filesrc)
         delete_empty_directories(filedir)
 
-    def directory_auto_value(self, directory=None):
+    def directory_auto_value(self, directory = None):
         if directory is None:
             return
 

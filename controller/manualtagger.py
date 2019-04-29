@@ -19,14 +19,14 @@ class ManualTagger:
 
     def multitag_file(self, file, tags):
         """Tag single file with multiple values
-        tags elements should have form {tag:, value:}"""
+        tags elements should have form {tag: _, value: _}"""
         for element in tags:
-            self.tag_file(element.tag, element.value)
+            self.tag_file(file, element.tag, element.value)
 
     def multiclear_file(self, file, tags):
         """Remove multiple tags from single file"""
         for tag in tags:
-            self.tag_remove(file, tag)
+            self.clear_file(file, tag)
 
     def tag_files(self, files, tag, value):
         """Tag multiple file with single value"""
@@ -53,3 +53,5 @@ class ManualTagger:
         """Save changes in all the tagged files"""
         for file in self._taggedfiles:
             file.save_changes()
+            
+        self._taggedfiles.clear()

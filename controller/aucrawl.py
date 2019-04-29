@@ -11,7 +11,7 @@ class AutoCrawler(AutoTag):
     tags have to be available to produce the results in the database.
     Tags that can be crawled currently: Genre, Label, Year"""
 
-    def __init__(self, token, tags, filtermask={}):
+    def __init__(self, token, tags, filtermask = {}):
         self.tags = tags
         self.client = discogs_client.Client("AuTag", user_token=token)
         self.filtermask = filtermask
@@ -51,7 +51,7 @@ class AutoCrawler(AutoTag):
 
         return results[0]
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 
@@ -63,7 +63,7 @@ class AutoCrawler(AutoTag):
                 if value is not None:
                     file.write_tag(tag, value)
 
-    def multiset_auto_value(self, files=None):
+    def multiset_auto_value(self, files = None):
         if files is None or len(files) is 0:
             return
 
@@ -77,7 +77,7 @@ class AutoCrawler(AutoTag):
                     for file in files:
                         file.write_tag(tag, value)
 
-    def directory_auto_value(self, directory=None):
+    def directory_auto_value(self, directory = None):
         if directory is None:
             return
 

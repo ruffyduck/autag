@@ -21,7 +21,7 @@ class AutoDefault(AutoTag):
                     for tag in tags:
                         self.dict[get_tag(tag)] = tags[tag]
 
-    def set_auto_value(self, file=None):
+    def set_auto_value(self, file = None):
         if file is None:
             return
 

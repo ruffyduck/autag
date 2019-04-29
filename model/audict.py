@@ -7,7 +7,7 @@ from autag.model.basetag import get_tag
 class AuDict(dict):
     """Dictionary for value correction"""
 
-    def __init__(self, partial=False):
+    def __init__(self, partial = False):
         super().__init__()
         self.tag = None
         self.partial = partial

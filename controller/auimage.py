@@ -8,7 +8,7 @@ class AutoImage(AutoTag):
     """Class for automatically assigning images in the same directory
     as album art to files. Images will be picked in alphabetical order"""
 
-    def __init__(self, flags=[".png", ".jpg"]):
+    def __init__(self, flags = [".png", ".jpg"]):
         super().__init__()
         self.flags = flags
 

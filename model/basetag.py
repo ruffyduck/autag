@@ -4,7 +4,7 @@
 class BaseTag:
     """Class that represent a basic tag"""
 
-    def __init__(self, name=None, tag=None):
+    def __init__(self, name = None, tag = None):
         self.name = name
         self.tag = tag
 

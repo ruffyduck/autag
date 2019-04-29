@@ -1,7 +1,7 @@
 {
     "default_values": [{
-	"DISCNUMBER": "1",
-	"DISCTOTAL": "1",
-	"CONTENTGROUP": "LP"
+		"DISCNUMBER": "1",
+		"DISCTOTAL": "1",
+		"CONTENTGROUP": "LP"
     }]
 }

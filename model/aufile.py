@@ -1,13 +1,11 @@
 """Provides class for basic music files"""
 
-from abc import abstractmethod
 from autag.model.basetag import get_tag
-
 
 class AuFile:
     """Class that represents music files"""
 
-    def __init__(self, fileName=None, audio=None):
+    def __init__(self, fileName = None, audio = None):
         self.filename = fileName
         self.audio = audio
         self._tags = {}
@@ -39,10 +37,10 @@ class AuFile:
         """Returns an iterator of the file's tags"""
         return iter(self._tags)
 
-    @abstractmethod
     def _write_audio_tag(self, tag, value):
         """Write tag into the underlying file structure"""
-        pass
+        raise NotImplementedError
+
 
     def write_tag(self, basetag, value):
         """Write value of tag"""
@@ -77,28 +75,23 @@ class AuFile:
         """Output all tags of file"""
         print(self.audio.tags)
 
-    @abstractmethod
     def update_filepath(self, filepath):
         """Updates file path of this file"""
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def get_images(self):
         """Get a list of all embedded images"""
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
-    def add_image(self, imagefile, covertype=3):
+    def add_image(self, imagefile, covertype = 3):
         """Adds album art to the file depending on type
         e.g. type 3 means front cover"""
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def remove_images(self):
         """Removes all images from file"""
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def get_file_extension(self):
         """Returns extension of file"""
-        pass
+        raise NotImplementedError
