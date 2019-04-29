@@ -3,7 +3,7 @@
 import re
 from os import rename
 from autag.controller.autag import AutoTag
-from autag.controller.filereader import get_directory, remove_illegal_chars
+from autag.io.filereader import get_directory, remove_illegal_chars
 
 
 class AutoRename(AutoTag):

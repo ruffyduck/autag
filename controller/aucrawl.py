@@ -2,7 +2,7 @@
 
 import discogs_client
 from autag.controller.autag import AutoTag
-from autag.controller.filereader import get_aufiles
+from autag.io.filereader import get_aufiles
 from autag.model.basetag import get_tag
 
 

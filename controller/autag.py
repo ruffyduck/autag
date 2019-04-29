@@ -1,6 +1,6 @@
 """Provides basic auto tag class"""
 
-from autag.controller.filereader import get_aufiles
+from autag.io.filereader import get_aufiles
 
 class AutoTag:
     """Abstract base class for auto tags"""
