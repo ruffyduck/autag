@@ -1,4 +1,3 @@
-"""Entry point for AuTag"""
 
 import sys, getopt, os
 
@@ -16,7 +15,6 @@ from autag.controller.autagger import AutoTagger
 from autag.controller.repltag import ReplaceTag
 from autag.model.audict import build_auto_dicts
 from autag.model.basetag import get_tag
-from autag.view.augui import AuGUI
 
 def main(argv):
 
@@ -48,9 +46,6 @@ def main(argv):
 
 	auto_file = AutoTagger()
 	auto_file.add_auto_tags([AutoRename()])  #, AutoMove("D:/Musik/")])
-
-	gui = AuGUI(auto_tag, auto_file, dir)
-	gui.draw()
 
 
 if __name__== "__main__":
