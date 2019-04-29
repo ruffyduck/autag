@@ -1,7 +1,7 @@
 """Module that provides functionality of automated dictionaries"""
 
 import json
-from model.basetag import get_tag
+from autag.model.basetag import get_tag
 
 
 class AuDict(dict):

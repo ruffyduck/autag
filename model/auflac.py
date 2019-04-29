@@ -2,7 +2,7 @@
 
 from mutagen.flac import FLAC
 from mutagen.flac import Picture
-from model.aufile import AuFile
+from autag.model.aufile import AuFile
 
 
 class AuFlac(AuFile):

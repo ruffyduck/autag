@@ -2,10 +2,10 @@
 
 from tkinter import Button, mainloop, Tk
 import tkinter.filedialog
-from view.tagentry import TagEntry, SingleTagEntry
-from view.gridmanager import GridManager
-from model.basetag import get_tag
-from controller.filereader import get_aufiles
+from autag.view.tagentry import TagEntry, SingleTagEntry
+from autag.view.gridmanager import GridManager
+from autag.model.basetag import get_tag
+from autag.controller.filereader import get_aufiles
 
 
 class AuGUI:

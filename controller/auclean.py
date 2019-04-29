@@ -1,8 +1,8 @@
 """Module for cleaning directories"""
 
-from controller.autag import AutoTag
-from controller.filereader import get_directory, delete_file
-from controller.filereader import list_files, MUSICFLAGS
+from autag.controller.autag import AutoTag
+from autag.controller.filereader import get_directory, delete_file
+from autag.controller.filereader import list_files, MUSICFLAGS
 
 
 class AutoCleanup(AutoTag):

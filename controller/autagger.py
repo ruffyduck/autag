@@ -1,6 +1,6 @@
 """Module that provides auto tagging functionality"""
 
-from controller.filereader import get_aufiles
+from autag.controller.filereader import get_aufiles
 
 
 class AutoTagger:

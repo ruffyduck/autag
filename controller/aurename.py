@@ -2,8 +2,8 @@
 
 import re
 from os import rename
-from controller.autag import AutoTag
-from controller.filereader import get_directory, remove_illegal_chars
+from autag.controller.autag import AutoTag
+from autag.controller.filereader import get_directory, remove_illegal_chars
 
 
 class AutoRename(AutoTag):

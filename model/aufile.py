@@ -1,7 +1,7 @@
 """Provides class for basic music files"""
 
 from abc import abstractmethod
-from model.basetag import get_tag
+from autag.model.basetag import get_tag
 
 
 class AuFile:

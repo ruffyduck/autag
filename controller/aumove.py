@@ -3,10 +3,10 @@
 import os
 import re
 import shutil
-from controller.autag import AutoTag
-from controller.filereader import get_directory, delete_empty_directories
-from controller.filereader import list_files
-from controller.filereader import get_aufile, move_aufile, MUSICFLAGS
+from autag.controller.autag import AutoTag
+from autag.controller.filereader import get_directory, delete_empty_directories
+from autag.controller.filereader import list_files
+from autag.controller.filereader import get_aufile, move_aufile, MUSICFLAGS
 
 
 class AutoMove(AutoTag):

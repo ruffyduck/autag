@@ -1,7 +1,7 @@
 """Provides basic auto tag class"""
 
 from abc import abstractmethod
-from controller.filereader import get_aufiles
+from autag.controller.filereader import get_aufiles
 
 
 class AutoTag:

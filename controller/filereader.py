@@ -4,8 +4,8 @@ and directory management"""
 from os import listdir, remove, path, rmdir
 from shutil import rmtree, move
 from fnmatch import fnmatch
-from model.auflac import AuFlac
-from model.aump3 import AuMP3
+from autag.model.auflac import AuFlac
+from autag.model.aump3 import AuMP3
 
 ILLEGAL_CHARACTERS = ['/', '?', '*', '<', '>', '|', '"']
 MUSICFLAGS = [".flac", ".mp3"]

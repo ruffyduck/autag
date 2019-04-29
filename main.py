@@ -1,25 +1,27 @@
 """Entry point for AuTag"""
 
-import sys, getopt
-from controller.auclean import AutoCleanup
-from controller.aucrawl import AutoCrawler
-from controller.audefault import AutoDefault
-from controller.auimage import AutoImage
-from controller.aumove import AutoMove
-from controller.aunumber import AutoNumbers
-from controller.auremove import AutoRemoval
-from controller.aurename import AutoRename
-from controller.autagger import AutoTagger
-from controller.repltag import ReplaceTag
-from model.audict import build_auto_dicts
-from model.basetag import get_tag
-from view.augui import AuGUI
+import sys, getopt, os
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from autag.controller.auclean import AutoCleanup
+from autag.controller.aucrawl import AutoCrawler
+from autag.controller.audefault import AutoDefault
+from autag.controller.auimage import AutoImage
+from autag.controller.aumove import AutoMove
+from autag.controller.aunumber import AutoNumbers
+from autag.controller.auremove import AutoRemoval
+from autag.controller.aurename import AutoRename
+from autag.controller.autagger import AutoTagger
+from autag.controller.repltag import ReplaceTag
+from autag.model.audict import build_auto_dicts
+from autag.model.basetag import get_tag
+from autag.view.augui import AuGUI
 
 def main(argv):
 
 	try:
-		opts, args = getopt.getopt(argv, "hd:", ["-help","directory="])
+		opts, _ = getopt.getopt(argv, "hd:", ["-help","directory="])
 	except getopt.GetoptError as e:
 		print(e)
 		sys.exit(2)
@@ -28,7 +30,7 @@ def main(argv):
 	for opt, arg in opts:
 		if opt == '-h':
 			print("Pass '-d' or 'directory=' to tag files in given directory")
-			sys.exit();
+			sys.exit()
 		elif opt in ('-d', '-directory'):
 			dir = arg
 
@@ -52,4 +54,4 @@ def main(argv):
 
 
 if __name__== "__main__":
-	main(sys.argv[1:]);
+	main(sys.argv[1:])

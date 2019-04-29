@@ -1,7 +1,7 @@
 """Module that provides the auto image tagging class"""
 
-from controller.autag import AutoTag
-from controller.filereader import get_directory, delete_file, list_files
+from autag.controller.autag import AutoTag
+from autag.controller.filereader import get_directory, delete_file, list_files
 
 
 class AutoImage(AutoTag):
