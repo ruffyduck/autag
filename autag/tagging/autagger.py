@@ -2,7 +2,6 @@
 
 from autag.io.filereader import get_aufiles
 
-
 class AutoTagger:
     """Class for tagging  files automatically"""
 

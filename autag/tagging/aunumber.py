@@ -1,8 +1,8 @@
 """Class for automatically indexing music files"""
 
-from autag.controller.autag import AutoTag
+from autag.tagging.autag import AutoTag
 from autag.io.filereader import get_aufiles
-from autag.model.basetag import get_tag
+from autag.basetag import get_tag
 
 
 class AutoNumbers(AutoTag):

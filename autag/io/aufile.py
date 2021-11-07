@@ -1,6 +1,6 @@
 """Provides class for basic music files"""
 
-from autag.model.basetag import get_tag
+from autag.basetag import get_tag
 
 class AuFile:
     """Class that represents music files"""

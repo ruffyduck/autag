@@ -3,7 +3,7 @@
 import os
 import re
 import shutil
-from autag.controller.autag import AutoTag
+from autag.tagging.autag import AutoTag
 from autag.io.filereader import get_directory, delete_empty_directories
 from autag.io.filereader import list_files
 from autag.io.filereader import get_aufile, move_aufile, MUSICFLAGS

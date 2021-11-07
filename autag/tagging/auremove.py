@@ -1,8 +1,8 @@
 """Module that provides automatic tag removal functionality"""
 
 import json
-from autag.controller.autag import AutoTag
-from autag.model.basetag import get_tag
+from autag.tagging.autag import AutoTag
+from autag.basetag import get_tag
 
 
 class AutoRemoval(AutoTag):

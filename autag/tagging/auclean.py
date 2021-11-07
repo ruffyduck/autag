@@ -1,6 +1,6 @@
 """Module for cleaning directories"""
 
-from autag.controller.autag import AutoTag
+from autag.tagging.autag import AutoTag
 from autag.io.filereader import get_directory, delete_file
 from autag.io.filereader import list_files, MUSICFLAGS
 

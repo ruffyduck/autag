@@ -2,8 +2,8 @@
 
 from mutagen.mp3 import EasyMP3, MP3
 from mutagen.id3 import APIC
-from autag.model.basetag import get_tag
-from autag.model.aufile import AuFile
+from autag.basetag import get_tag
+from autag.io.aufile import AuFile
 
 
 class AuMP3(AuFile):

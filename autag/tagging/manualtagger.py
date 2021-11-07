@@ -1,6 +1,5 @@
 """Module that provides manual tagging functionality"""
 
-
 class ManualTagger:
     """Class that allows easy manual tagging of files"""
 

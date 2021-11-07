@@ -1,7 +1,6 @@
 """Module provides functionality for replacement tags"""
 
-from autag.controller.autag import AutoTag
-
+from autag.tagging.autag import AutoTag
 
 class ReplaceTag(AutoTag):
     """Auto tag that replaces values in files depending

@@ -1,9 +1,9 @@
 """Module that provides auto tagging via crawling the music library Discogs"""
 
 import discogs_client
-from autag.controller.autag import AutoTag
+from autag.tagging.autag import AutoTag
 from autag.io.filereader import get_aufiles
-from autag.model.basetag import get_tag
+from autag.basetag import get_tag
 
 
 class AutoCrawler(AutoTag):

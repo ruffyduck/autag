@@ -1,6 +1,5 @@
 """Provides functionality for basic tags"""
 
-
 class BaseTag:
     """Class that represent a basic tag"""
 

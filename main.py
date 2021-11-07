@@ -1,17 +1,17 @@
 import sys, getopt
 
-from autag.controller.auclean import AutoCleanup
-from autag.controller.aucrawl import AutoCrawler
-from autag.controller.audefault import AutoDefault
-from autag.controller.auimage import AutoImage
-from autag.controller.aumove import AutoMove
-from autag.controller.aunumber import AutoNumbers
-from autag.controller.auremove import AutoRemoval
-from autag.controller.aurename import AutoRename
-from autag.controller.autagger import AutoTagger
-from autag.controller.repltag import ReplaceTag
-from autag.model.audict import build_auto_dicts
-from autag.model.basetag import get_tag
+from autag.tagging.auclean import AutoCleanup
+from autag.tagging.aucrawl import AutoCrawler
+from autag.tagging.audefault import AutoDefault
+from autag.tagging.auimage import AutoImage
+from autag.tagging.aumove import AutoMove
+from autag.tagging.aunumber import AutoNumbers
+from autag.tagging.auremove import AutoRemoval
+from autag.tagging.aurename import AutoRename
+from autag.tagging.autagger import AutoTagger
+from autag.tagging.repltag import ReplaceTag
+from autag.audict import build_auto_dicts
+from autag.basetag import get_tag
 
 def main(argv):
 	try:

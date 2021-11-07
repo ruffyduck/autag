@@ -30,9 +30,8 @@ setup(
     ],
     packages=[
         "autag",
-        "autag.controller",
         "autag.io",
-        "autag.model",
+        "autag.tagging",
     ],
     include_package_data=True,
     install_requires=[
