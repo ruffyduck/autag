@@ -46,7 +46,7 @@ class AutoCrawler(AutoTag):
 
         results = self.client.search(artist + ' ' + album, type='master')
 
-        if len(results) is 0:
+        if len(results) == 0:
             return None
 
         return results[0]
@@ -64,7 +64,7 @@ class AutoCrawler(AutoTag):
                     file.write_tag(tag, value)
 
     def multiset_auto_value(self, files = None):
-        if files is None or len(files) is 0:
+        if files is None or len(files) == 0:
             return
 
         protofile = files[0]

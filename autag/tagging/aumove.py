@@ -76,7 +76,7 @@ class AutoMove(AutoTag):
             return
 
         musicfiles = list_files(directory, MUSICFLAGS)
-        if len(musicfiles) is 0:
+        if len(musicfiles) == 0:
             return
 
 #       Choose one of the music files to determine the

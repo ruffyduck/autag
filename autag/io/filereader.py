@@ -122,12 +122,12 @@ def delete_empty_directories(directory, child = None):
 
     files = list_files(directory)
 #   Delete folder if it is empty
-    if len(files) is 0:
+    if len(files) == 0:
         rmdir(directory)
         delete_empty_directories(get_directory(directory), directory)
 #   Delete folder if the only content is the previously deleted folder.
 #   This is necessary because that folder might not be deleted in time.
-    elif len(files) is 1 and files[0] == child:
+    elif len(files) == 1 and files[0] is child:
         rmtree(directory)
         delete_empty_directories(get_directory(directory), directory)
 
