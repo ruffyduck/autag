@@ -1,7 +1,4 @@
-
-import sys, getopt, os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import sys, getopt
 
 from autag.controller.auclean import AutoCleanup
 from autag.controller.aucrawl import AutoCrawler
@@ -17,7 +14,6 @@ from autag.model.audict import build_auto_dicts
 from autag.model.basetag import get_tag
 
 def main(argv):
-
 	try:
 		opts, _ = getopt.getopt(argv, "hd:", ["-help","directory="])
 	except getopt.GetoptError as e:
